@@ -2,11 +2,14 @@ const express = require("express");
 const router = express.Router();
 const { authMiddleware } = require("../utils/auth");
 
-const userRegister = require("../controllers/userRegister");
-const userLogin = require("../controllers/userLogin");
+const userRegister = require("../controllers/user/userRegister");
+const userLogin = require("../controllers/user/userLogin");
 
-const createProject = require("../controllers/createProjects");
-const getProjects = require("../controllers/getProjects")
+const createProject = require("../controllers/project/createProjects");
+const getProjects = require("../controllers/project/getProjects");
+const getProjectById = require("../controllers/project/getProjectsById")
+const updateProject = require("../controllers/project/updateProject")
+const deleteProject = require("../controllers/project/deleteProject")
 /**
  * Public Routes
  */
@@ -23,5 +26,8 @@ router.use(authMiddleware);
  */
 router.post("/projects", createProject);
 router.get("/projects", getProjects);
+router.get("/projects/:id", getProjectById)
+router.put("/projects/:id", updateProject)
+router.delete("/projects/:id", deleteProject)
 
 module.exports = router;
