@@ -1,0 +1,31 @@
+const { Schema, model } = require("mongoose");
+
+const taskSchema = new Schema(
+    {
+        title: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        description: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        status: {
+            type: String,
+            enum: ["To Do", "In Progress", "Done"],
+            default: "To Do",
+        },
+        project: {
+            type: Schema.Types.ObjectId,
+            ref: "Project",
+            required: true,
+        },
+    },
+    {
+        timestamps: true,
+    },
+);
+
+module.exports = model("Task", taskSchema);
