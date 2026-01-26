@@ -4,7 +4,7 @@ const { authMiddleware } = require("../utils/auth");
 
 const userRegister = require("../controllers/userRegister");
 const userLogin = require("../controllers/userLogin");
-const createProject = require("../controllers/createProject");
+const createProject = require("../controllers/createProjects");
 
 /**
  * Public Routes
@@ -21,6 +21,6 @@ router.use(authMiddleware);
  * Protected Routes
  */
 
-router.post("/project", createProject);
+router.post("/projects", createProject);
 
 module.exports = router;
