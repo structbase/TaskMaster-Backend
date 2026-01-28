@@ -97,6 +97,111 @@ Security and correctness were the primary focus.
 
 ---
 
+## 🚀 Live Demo
+
+🌐 **Live API:**
+👉 [https://taskmaster-dths.onrender.com](https://taskmaster-dths.onrender.com)
+
+> ⚠️ **Important Note**
+>
+> This project is a **backend-only REST API**.
+> There is **no frontend UI** provided.
+>
+> To interact with and test the API, please use an API client such as:
+>
+> * **Insomnia** (recommended)
+> * **Postman**
+> * **cURL**
+
+---
+
+## 🧪 How to Test the Live API
+
+### 1️⃣ Register a New User
+
+**POST** `/api/users/register`
+
+```json
+{
+  "username": "testuser",
+  "email": "testuser@email.com",
+  "password": "password123"
+}
+```
+
+---
+
+### 2️⃣ Login to Receive JWT
+
+**POST** `/api/users/login`
+
+```json
+{
+  "email": "testuser@email.com",
+  "password": "password123"
+}
+```
+
+✔️ Copy the returned **JWT token**
+
+---
+
+### 3️⃣ Authenticate Requests
+
+For all protected routes, add this header:
+
+```
+Authorization: Bearer <YOUR_JWT_TOKEN>
+```
+
+---
+
+### 4️⃣ Create a Project
+
+**POST** `/api/projects`
+
+```json
+{
+  "name": "My First Project",
+  "description": "Testing live API"
+}
+```
+
+---
+
+### 5️⃣ Create a Task for a Project
+
+**POST** `/api/projects/:projectId/tasks`
+
+```json
+{
+  "title": "Finish backend",
+  "description": "Complete Tasks API",
+  "status": "To Do"
+}
+```
+
+---
+
+### 6️⃣ Update or Delete a Task
+
+**PUT** `/api/tasks/:taskId`
+**DELETE** `/api/tasks/:taskId`
+
+> ⚠️ Authorization is enforced:
+> * You **must own the parent project**
+> * Cross-user access is blocked with **403 Forbidden**
+
+---
+
+## 🔐 Security Reminder
+
+* All project and task routes are **JWT-protected**
+* Ownership checks are enforced at **every level**
+* Tokens are required for all non-auth routes
+
+---
+
 ## 🛠️ Built With
 
 * **Node.js**
