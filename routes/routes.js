@@ -14,6 +14,7 @@ const deleteProject = require("../controllers/project/deleteProject")
 const createTask = require("../controllers/task/createTask")
 const getTask = require("../controllers/task/getTask");
 const updateTask = require("../controllers/task/updateTask");
+const deleteTask = require("../controllers/task/deleteTask");
 
 
 /**
@@ -46,6 +47,7 @@ router.delete("/projects/:id", deleteProject)
 router.post("/projects/:projectId/tasks", createTask);
 router.get("/projects/:projectId/tasks", getTask);
 router.put("/tasks/:taskId", updateTask);
+router.delete("/tasks/:taskId", deleteTask);
 
 
 module.exports = router;
