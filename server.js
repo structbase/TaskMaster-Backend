@@ -19,7 +19,7 @@ app.use(express.json()); // Parses JSON data (from API requests)
  * API ROUTES
  * Prefixing with '/api/users', ensure all backend routes (e.g., /api/users/notes)
  */
-app.use("/api/users", routes);
+app.use("/api", routes);
 
 /**
  * DATABASE INITIALIZATION
